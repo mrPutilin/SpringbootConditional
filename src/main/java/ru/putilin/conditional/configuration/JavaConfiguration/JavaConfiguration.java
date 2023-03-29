@@ -10,13 +10,13 @@ import ru.putilin.conditional.SystemProfile;
 
 @Configuration
 public class JavaConfiguration {
-    @ConditionalOnProperty(prefix = "netology.profile", name= "dev", havingValue = "true")
+    @ConditionalOnProperty(prefix = "netology.profile", name = "dev", havingValue = "true", matchIfMissing = true)
     @Bean(name = "devProfile")
     public SystemProfile devProfile(){
         return new DevProfile();
     }
 
-    @ConditionalOnProperty(prefix = "netology.profile", name="dev", havingValue = "false")
+    @ConditionalOnProperty(prefix = "netology.profile", name="dev", havingValue = "false", matchIfMissing = true)
     @Bean(name = "productionProfile")
     public SystemProfile prodProfile() {
         return new ProductionProfile();
